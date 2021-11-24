@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamServer", "TeamServer\TeamServer.csproj", "{6D7D49B6-0A11-4E67-843F-BB49D34B70BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiModels", "ApiModels\ApiModels.csproj", "{F51A89C2-F647-4F38-A4D5-0A68AC254D04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agent", "Agent\Agent.csproj", "{0544276C-3830-4886-B706-ED2608D3B5B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D7D49B6-0A11-4E67-843F-BB49D34B70BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7D49B6-0A11-4E67-843F-BB49D34B70BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7D49B6-0A11-4E67-843F-BB49D34B70BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7D49B6-0A11-4E67-843F-BB49D34B70BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F51A89C2-F647-4F38-A4D5-0A68AC254D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F51A89C2-F647-4F38-A4D5-0A68AC254D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F51A89C2-F647-4F38-A4D5-0A68AC254D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F51A89C2-F647-4F38-A4D5-0A68AC254D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0544276C-3830-4886-B706-ED2608D3B5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0544276C-3830-4886-B706-ED2608D3B5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0544276C-3830-4886-B706-ED2608D3B5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0544276C-3830-4886-B706-ED2608D3B5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9649D681-0DA2-4344-9521-C2396A27FC6E}
+	EndGlobalSection
+EndGlobal
