@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using TeamServer.Models.Agents;
+
+using TeamServer.Models;
 
 namespace TeamServer.Services
 {
     public interface IAgentService
     {
         void AddAgent(Agent agent);
-        //array or list...
         IEnumerable<Agent> GetAgents();
         Agent GetAgent(string id);
         void RemoveAgent(Agent agent);
-
     }
+
     public class AgentService : IAgentService
     {
         private readonly List<Agent> _agents = new();
+
         public void AddAgent(Agent agent)
         {
             _agents.Add(agent);

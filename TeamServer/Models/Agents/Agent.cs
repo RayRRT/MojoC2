@@ -2,14 +2,12 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace TeamServer.Models.Agents
+namespace TeamServer.Models
 {
     public class Agent
     {
         public AgentMetadata Metadata { get; }
-
         public DateTime LastSeen { get; private set; }
 
         private readonly ConcurrentQueue<AgentTask> _pendingTasks = new();
@@ -30,10 +28,10 @@ namespace TeamServer.Models.Agents
             _pendingTasks.Enqueue(task);
         }
 
-        //GetPendingTask to try do dequeue tasks and add new:
         public IEnumerable<AgentTask> GetPendingTasks()
         {
             List<AgentTask> tasks = new();
+            
             while (_pendingTasks.TryDequeue(out var task))
             {
                 tasks.Add(task);
@@ -51,7 +49,10 @@ namespace TeamServer.Models.Agents
         {
             return _taskResults;
         }
-            
 
+        public void AddTaskResults(IEnumerable<AgentTaskResult> results)
+        {
+            _taskResults.AddRange(results);
+        }
     }
 }

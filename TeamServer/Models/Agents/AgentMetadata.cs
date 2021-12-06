@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TeamServer.Models.Agents
+﻿namespace TeamServer.Models
 {
     public class AgentMetadata
     {
@@ -14,6 +9,5 @@ namespace TeamServer.Models.Agents
         public int ProcessId { get; set; }
         public string Integrity { get; set; }
         public string Architecture { get; set; }
-
     }
 }

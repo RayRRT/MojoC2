@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 using TeamServer.Models;
 
 namespace TeamServer.Services
@@ -9,7 +8,6 @@ namespace TeamServer.Services
     public interface IListenerService
     {
         void AddListener(Listener listener);
-        //array or list...
         IEnumerable<Listener> GetListeners();
         Listener GetListener(string name);
         void RemoveListener(Listener listener);
@@ -18,6 +16,7 @@ namespace TeamServer.Services
     public class ListenerService : IListenerService
     {
         private readonly List<Listener> _listeners = new();
+
         public void AddListener(Listener listener)
         {
             _listeners.Add(listener);

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +14,6 @@ namespace TeamServer.Models
         public int BindPort { get; }
 
         private CancellationTokenSource _tokenSource;
-
 
         public HttpListener(string name, int bindPort)
         {
@@ -34,7 +34,7 @@ namespace TeamServer.Models
             var host = hostBuilder.Build();
 
             _tokenSource = new CancellationTokenSource();
-            host.RunAsync(_tokenSource.Token);
+            var task = host.RunAsync(_tokenSource.Token);
         }
 
         private void ConfigureServices(IServiceCollection services)

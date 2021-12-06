@@ -19,7 +19,7 @@ namespace Agent.Models
             AgentMetadata = metadata;
         }
 
-        public bool RecvData (out IEnumerable<AgentTask> tasks)
+        public bool RecvData(out IEnumerable<AgentTask> tasks)
         {
             if (Inbound.IsEmpty)
             {
@@ -51,6 +51,7 @@ namespace Agent.Models
             {
                 outbound.Add(task);
             }
+
             return outbound;
         }
     }
